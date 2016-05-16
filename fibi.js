@@ -1,25 +1,16 @@
+var choice = prompt("Pick a number.");
 
-var fib = [];
-var fibstart = prompt("Pick a number between 1 and 10.");
-  fib[0]= 1;
-  fib[1]= 1;
-
-
-var fibNum = function(){
-
-for(var count = 2; count <101; count++){
-  fib[count] = fib[count-2] + fib[count-1];
+var fib = function(number){
+  var fib0 = 1;
+  var fib1 = 1;
+  var fibNext;
+  var count = 2;
+  while (count < number) {
+    fibNext = fib0 + fib1;
+    fib0 = fib1;
+    fib1 = fibNext;
+    count++;
+  };
+    return(fibNext);
 };
-for (var i = 0; i < fibstart; i++){
-
-  console.log(fib[i]);
-};
-};
-fibNum();
-
-
-
-//var answer = prompt("What is the next number?");
-  
-
-
+fib(choice);
