@@ -1,0 +1,9 @@
+function reverseArrayInPlace(array1){
+  var hold;
+  for(var j = 0; j < Math.floor((array1.length)/2); j++){
+    var hold = array1[j];
+    array1[j] = array1[(array1.length) -1 - j];
+    array1[array1.length -j -1] = hold;
+  };
+  return array1;
+};

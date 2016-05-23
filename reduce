@@ -1,0 +1,71 @@
+var each = function(array, fn) {
+  var i;
+  for(i = 0; i <= array.length - 1; i++ ){
+    fn(array[i], i);
+  }
+
+}
+var map = function(array, fn) {
+  var arr1 = [];
+  each(array, function(elem, i) {
+    //put some code here
+    arr1.push(fn(elem, i))
+  });
+  return arr1;
+}
+var filter = function(array, fn){
+  var arr2 = [];
+  each(array, function(elem, i){
+    if(fn(elem, i)){
+      arr2.push(elem);
+    }
+  });
+  return arr2;//some array
+}
+var contains = function(array, int){
+  var confirm;
+  each(array, function(elem, i){
+    if(elem === int){
+      confirm = true;
+    }
+    else{
+      confirm = false;
+    }
+  })
+  return confirm;
+}
+var any = function(array, fn) {
+  var confirm;
+  each(array, function(elem, i) {
+    if( fn(elem, i)){
+      confirm = true;
+    }
+    else{
+      confirm = false;
+    }
+  })
+  return confirm;
+}
+var every = function(array, fn) {
+  var confirmArr = [];
+  confirmArr = filter(array, fn);
+  if (confirmArr.length === array.length){
+    return true;
+  }
+  else{
+    return false;
+  }
+};
+
+var reduce = function(array, memo, fn){
+  var combine = 0;
+  each(array, function(elem, i){
+    combine += fn(memo, elem, i);
+  });
+  return combine;
+}
+
+
+reduce([1, 2, 3, 4], 0, function(memo, elem, i) {
+  return memo + elem;
+}); // => 10

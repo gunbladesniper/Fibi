@@ -1,0 +1,29 @@
+var each = function(array, fn) {
+  var i;
+  for(i = 0; i <= array.length - 1; i++ ){
+    fn(array[i], i);
+  }
+
+}
+var map = function(array, fn) {
+  var arr1 = [];
+  each(array, function(elem, i) {
+    //put some code here
+    arr1.push(fn(elem, i))
+  });
+  return arr1;
+}
+
+var filter = function(array, fn){
+  var arr2 = [];
+  each(array, function(elem, i){
+    if(fn(elem, i)){
+      arr2.push(elem);
+    }
+  });
+  return arr2;//some array
+}
+
+filter([1, 2, 3, 4, 5], function(elem, i) {
+  return elem % 2 === 0;
+}) // => [2, 4]

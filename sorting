@@ -1,0 +1,30 @@
+function onePass(array){
+  var hold;
+  var i;
+  for(i = 0; i < array.length; i++){
+    while(array[i] > array[i+1]){
+      hold = array[i];
+      array[i]= array[i+1];
+      array[i+1]=hold;
+    };
+  };
+  return array;
+};
+
+function isSorted(array) {
+  var i;
+  for (i = 0; i <= array.length - 2; i++) {
+    if (array[i] > array[i + 1]) {
+      return false;
+    }
+  }
+  return true;
+}
+function sort(array) {
+  var hold = array;
+  while(!isSorted(hold)) {
+    hold = onePass(hold);
+  }
+  return hold;
+
+}
