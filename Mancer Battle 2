@@ -1,0 +1,119 @@
+Character = function(){
+  this.hp = 10;
+  this.attk =1 ;
+  this.def = 1;
+};
+Character.prototype.basicAttack = function(){
+
+  return this.attk + this.bAtt;
+};
+
+var getRandomInt = function(min, max){
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+
+Pyromancer = function(){
+  Character.call(this);
+  this.bAtt = 2;
+  this.bDef = 2;
+  this.elem = "fire";
+  this.elemBon = 1;
+
+};
+Pyromancer.prototype = Object.create(Character.prototype);
+Pyromancer.prototype.fireFist = function(){
+  var firefist = this.attk + this.bAtt + this.def + this.bDef;
+  if (this.elem == "fire"){
+    firefist = firefist + this.elemBon;
+  };
+
+  return firefist;
+};
+Pyromancer.prototype.fireShot = function(){
+  var hits = getRandomInt(1,4);
+  console.log("you hit " + hits +" times.");
+  var fireshot = hits + hits + this.attk + this.bAtt;
+  if (this.elem == "fire"){
+    fireshot = fireshot + (this.elemBon*hits);
+  };
+  return fireshot;
+};
+Pyromancer.prototype.flameShield = function(){
+  var flameshield = this.attk + this.bAtt + this.def*2 +this.bDef*2;
+  return flameshield;
+};
+
+Hydromancer = function(){
+  Character.call(this);
+  this.bAtt = 0;
+  this.bDef = 2;
+  this.elem = "water";
+  this.elemBon = 3;
+
+};
+Hydromancer.prototype = Object.create(Character.prototype);
+Hydromancer.prototype.bubbleBlast = function(){
+  var bubbleblast = this.def + this.bDef + this.elemBon;
+  return bubbleblast;
+};
+Hydromancer.prototype.hydroDrive = function(){
+  var hydrodrive = (this.def + this.bDef)*2;
+  return hydrodrive;
+};
+Hydromancer.prototype.waterTank = function(){
+  this.hp += (this.def+ this.bDef);
+  return this.hp;
+};
+
+Floramancer = function(){
+  Character.call(this);
+  this.bAtt = 2;
+  this.bDef = 0;
+  this.elem = "plant";
+  this.elemBon = 3;
+
+};
+Floramancer.prototype = Object.create(Character.prototype);
+Floramancer.prototype.vineSlash = function(){
+  var hits = getRandomInt(1,4);
+  console.log("you hit " + hits +" times.");
+  var vineslash = hits + this.attk + this.bAtt;
+  if (this.elem == "plant"){
+    vineslash = vineslash + this.elemBon + hits;
+  };
+  return vineslash;
+};
+Floramancer.prototype.thornShot = function(){
+  var thornshot = this.attk + this.bAtt + this.elemBon;
+  if (this.elem == "plant"){
+    thornshot = thornshot * 2;
+  }
+  return thornshot;
+};
+Floramancer.prototype.barkShield = function(){
+  var currentDef = this.def + this.bDef;
+  var barkshield = currentDef + this.elemBon;
+  return barkshield;
+};
+
+var characterChoice = function(){
+  //user picks a name and a type of character to be
+  //returns userMancer to use for the game
+};
+
+var computerChoice = function(){
+  //randomally generates a mancer character to be the user opponenent
+  //returns computerMancer
+};
+
+var battle =  function(userMancer, computerMancer){
+  // until a player reaches 0 hp
+  //each player takes turns selecting a move
+  //the resulting damage is calculated and the HP is adjusted accordingly
+  //certain types of moves do more damage based on the type of character the player is
+  //certain affects last until the end of the players next turn.
+
+};
+
+var bob= new Hydromancer();
