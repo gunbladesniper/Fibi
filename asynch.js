@@ -1,35 +1,41 @@
-
-
-
-function combine(af1, af2, clbk){
-  var a = af1.call(null, function(num){
-    return num;
-  });
-  var b = af2.call(null, function(num){
-    return num;
-  });
-
-  clbk.call(this, null, a, b);
-
-}
-
-function callback(err, a, b){
-    if(err){
-    console.log(err);
+function takeSync(fn1, fn2, cb) {
+  //...
+  state = {
+    count: 0,
+    hold : {
+      a: 0,
+      b: 0
     }
-    console.log(a+b);
-}
+  }
+  fn1(function(err, num){
+    state.hold.a = num;
+    state.count++
+    if(state.count==2){
+      cb(null, state.hold.a, state.hold.b);
+    }
+  });
+  fn2(function(err,num){
+      state.hold.b = num;
+      state.count++
+      if(state.count==2){
+        cb(null, state.hold.a, state.hold.b);
+      }
+  });
 
-function uno(clbk){
-  return clbk.call(null, 1);
-
-}
-function tres(clbk){
-  return clbk.call(null, 3);
-  
-}
-function numb(num){
-  return num;
 };
 
-combine(uno, tres , callback);
+var foo = function(cb) {
+  setTimeout(function() {
+    cb(null, 5)
+  }, 5000)
+};
+
+foo2 = function(cb) {
+  setTimeout(function() {
+    cb(null, 10);
+  }, 1000)
+};
+
+takeSync(foo, foo2, function(err, val1, val2) {
+  console.log(val1 + val2);
+});
