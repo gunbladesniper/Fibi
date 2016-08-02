@@ -3,6 +3,9 @@ function reverseArrayInPlace(array1){
   for(var j = 0; j < Math.floor((array1.length)/2); j++){
     var hold = array1[j];
     array1[j] = array1[(array1.length) -1 - j];
+    //array1[0] is the first num in arr array1[(arr1.length)-1-0] is the last.
+    // each pass through switches the front most unswitched number with the
+    // endmost unswitched number. middle one can stay in place. 
     array1[array1.length -j -1] = hold;
   };
   return array1;
