@@ -1,12 +1,9 @@
-var _ = require('underscore')
-
 // arr1 and arr2 are both SORTED
 var merge = function(arr1, arr2) {
   var arr3 = [];
   var i = 0;
   var j = 0;
   while (true) {
-    console.log(i, j, arr3)
     //breaking conditions
     if ((i  === arr1.length) && (j === arr2.length)){
       break;
@@ -40,20 +37,6 @@ var merge = function(arr1, arr2) {
 
   return arr3;
 };
-
-
-// [1 3 5] [2 4 6, 7, 8]m => [1 2 3 4 5 6]
-
-/*
- [ 1 3 4 5 4 5]
- [1 3 4]  [5 4 5]
- ([1 3] [4])  ([5 4] [5])
-  [1 3 4]      [4 5 5]
-  [1 3 4 4 5 5]
-  [1 3]
-  [1] [3]
-  [1] [3] => [1 3]
-*/
 
 var split = function(array) {
   var mid = Math.floor((array.length)/2);
