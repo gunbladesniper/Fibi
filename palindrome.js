@@ -1,38 +1,31 @@
 var reverseString = function(string){
   var flip ="";
   for(var i = string.length - 1; i >= 0; i--){
-    flip += string[i];
+    if(string[i] != " "){
+      flip += string[i];
+    }
   };
   return flip;
 };
 
+function removeSpaces(string){
+  var spaceless = "";
+  for(var i = 0; i<= string.length-1; i++){
+    if(string[i] != " "){
+      spaceless += string[i];
+    }
+  }
+  return spaceless;
+}
+
 
 
 var pally = function(word) {
-  var mid = Math.floor((word.length/2));
-
-    if(word.length % 2 == 0){
-      var half1 = word.slice(0, mid);
-      var half2 = word.slice(mid);
-      //console.log(half2);
-      if(half1.toLowerCase() == reverseString(half2.toLowerCase())){
-        return true;
-      }
-      else{
-        return false;
-      }
-    };
-
-    if(word.length % 2 !== 0){
-      var half1 = word.slice(0, mid);
-      var half2 = word.slice(mid+1);
-      //console.log(half2);
-      if(half1.toLowerCase() == reverseString(half2.toLowerCase())){
-        return true;
-      }
-      else{
-        return false;
-      }
-    };
+  var flip = reverseString(word);
+  var spaceless = removeSpaces(word);
+  if(flip.toUpperCase() == spaceless.toUpperCase()){
+    return true;
+  }
+  return false;
 };
-pally("tacoocaT");
+pally("taco cat");
