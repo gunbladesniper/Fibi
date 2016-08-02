@@ -1,7 +1,6 @@
 function onePass(array){
   var hold;
-  var i;
-  for(i = 0; i < array.length; i++){
+  for(var i = 0; i < array.length; i++){
     while(array[i] > array[i+1]){
       hold = array[i];
       array[i]= array[i+1];
@@ -11,9 +10,13 @@ function onePass(array){
   return array;
 };
 
+
+
 function isSorted(array) {
-  var i;
-  for (i = 0; i <= array.length - 2; i++) {
+  // array.length-2 is necessary because array[i+1] would be undefined at the
+  //end of the loop and give a incorrect result. array.length-2 is one before
+  //the last number in the array.
+  for (var i = 0; i <= array.length - 2; i++) {
     if (array[i] > array[i + 1]) {
       return false;
     }
